@@ -27,11 +27,11 @@
             <input name="fullname" value="${user.fullname}" placeholder="Nhập Họ và tên"><br>
             <label>Email: </label>
             <input name="email" value="${user.email}" placeholder="user@example.com"><br>
-            <label>Giới tính: </label>
-            <input name="gender" type="radio" value="true" ${user.admin?'checked':''}>
-            Male
-            <input name="gender" type="radio" value="false" ${user.admin?'':'checked'}>
-            Female
+            <label>Vai trò: </label>
+            <input name="admin" type="radio" value="true" ${user.admin?'checked':''}>
+            Manager
+            <input name="admin" type="radio" value="false" ${!user.admin?'':'checked'}>
+            User
             <hr>
             <button formaction="${url}/create">Create</button>
             <button formaction="${url}/update">Update</button>
