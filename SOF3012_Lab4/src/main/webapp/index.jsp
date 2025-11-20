@@ -114,9 +114,7 @@
                 </div>
             </div>
 
-            <p class="note">
-                * Nếu bấm link mà không ra dữ liệu, hãy kiểm tra lại CSDL và các JPQL ở servlet/DAO.
-            </p>
+            
         </c:when>
 
         <c:otherwise>
