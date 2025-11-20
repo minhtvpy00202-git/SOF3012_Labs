@@ -5,111 +5,124 @@
 <head>
     <meta charset="UTF-8">
     <title>Lab 4 – Trang chính</title>
-
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
             margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-
-        p {
-            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f5f7fb;
             color: #333;
         }
-
-        ul {
-            list-style: none;
+        .wrapper {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+        .page-title {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 26px;
+            color: #2c3e50;
+        }
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 24px 28px;
+            box-shadow: 0 4px 18px rgba(0,0,0,.06);
+        }
+        .welcome {
+            margin-bottom: 16px;
+        }
+        .welcome h2 {
+            margin: 0 0 6px;
+            font-size: 22px;
+            color: #27ae60;
+        }
+        .welcome p {
+            margin: 0;
+            color: #555;
+        }
+        .link-list {
+            margin: 20px 0;
             padding: 0;
-            margin-top: 30px;
-            text-align: center;
+            list-style: none;
         }
-
-        ul li {
-            margin: 12px 0;
+        .link-list li {
+            margin-bottom: 10px;
         }
-
-        a {
-            text-decoration: none;
-            padding: 10px 18px;
-            background: #3498db;
-            color: white;
+        .link-list a {
+            display: inline-block;
+            padding: 8px 14px;
             border-radius: 6px;
-            transition: 0.25s;
+            text-decoration: none;
+            background: #3498db;
+            color: #fff;
+            transition: background .2s, transform .1s;
         }
-
-        a:hover {
+        .link-list a:hover {
             background: #2980b9;
+            transform: translateY(-1px);
         }
-
-        .logout-box {
+        .logout {
+            margin-top: 12px;
+        }
+        .logout a {
+            font-size: 14px;
+            color: #e74c3c;
+            text-decoration: none;
+        }
+        .logout a:hover {
+            text-decoration: underline;
+        }
+        .note {
             text-align: center;
-            margin-top: 25px;
-        }
-
-        .logout-box a {
-            background: #e74c3c;
-        }
-
-        .logout-box a:hover {
-            background: #c0392b;
+            color: #777;
+            margin-top: 16px;
+            font-size: 14px;
         }
     </style>
-
 </head>
 <body>
-
-<div class="container">
+<div class="wrapper">
+    <h1 class="page-title">Lab 4 – PolyOE</h1>
 
     <c:choose>
-
-
         <c:when test="${not empty sessionScope.user}">
-            <h2>Xin chào, ${sessionScope.user.fullname}!</h2>
-            <p>Đăng nhập thành công.</p>
+            <div class="card">
+                <div class="welcome">
+                    <h2>Xin chào, ${sessionScope.user.fullname}!</h2>
+                    <p>Đăng nhập thành công. Hãy chọn bài Lab bên dưới để xem kết quả.</p>
+                </div>
 
-            <ul>
-                <li>
-                    <a href="${pageContext.request.contextPath}/search">
-                        Bài 3 – Tìm kiếm video theo từ khóa
-                    </a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/share-report">
-                        Bài 4 – Thống kê chia sẻ video
-                    </a>
-                </li>
-            </ul>
+                <ul class="link-list">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/search">
+                            Bài 3 – Tìm kiếm video theo từ khóa
+                        </a>
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/share-report">
+                            Bài 4 – Thống kê chia sẻ video
+                        </a>
+                    </li>
+                </ul>
 
-            <div class="logout-box">
-                <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                <div class="logout">
+                    <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                </div>
             </div>
-        </c:when>
 
+            <p class="note">
+                * Nếu bấm link mà không ra dữ liệu, hãy kiểm tra lại CSDL và các JPQL ở servlet/DAO.
+            </p>
+        </c:when>
 
         <c:otherwise>
             <jsp:forward page="/views/login.jsp"/>
         </c:otherwise>
-
     </c:choose>
-
 </div>
-
 </body>
 </html>
