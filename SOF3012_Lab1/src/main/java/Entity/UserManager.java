@@ -25,7 +25,7 @@ public class UserManager {
     }
 
     public void create() {
-        User user = new User("U01", "123", "Tèo", "teo@gmail.com", false);
+        User user = new User("U01", "123", "Trần Minh", "minhtvnh@gmail.com", false);
         try {
             em.getTransaction().begin();
             em.persist(user);
