@@ -9,6 +9,7 @@
     <title>Báo cáo chia sẻ video</title>
 </head>
 <body>
+<p>Lượt truy cập: ${applicationScope.visitors}</p>
 <c:if test="${not empty sessionScope.user}">
     <p>Họ và tên: ${sessionScope.user.fullname}</p>
 </c:if>

@@ -85,6 +85,7 @@
     </style>
 </head>
 <body>
+<p style="text-align:center">Lượt truy cập: ${applicationScope.visitors}</p>
 <div class="wrapper">
     <h1 class="page-title">Lab 4 – PolyOE</h1>
 

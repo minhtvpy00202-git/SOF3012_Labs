@@ -51,6 +51,7 @@
     </style>
 </head>
 <body>
+<p>Lượt truy cập: ${applicationScope.visitors}</p>
 <div class="login-box">
     <h2>Đăng nhập</h2>
 
