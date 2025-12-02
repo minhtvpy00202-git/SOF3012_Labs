@@ -9,9 +9,10 @@
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background: #f0f2f5;
+                background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
                 margin: 0;
                 padding: 0;
+                min-height: 100vh;
             }
 
             .container {
@@ -20,30 +21,40 @@
                 padding: 30px;
                 background: white;
                 border-radius: 10px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 4px 20px rgba(255, 99, 71, 0.2);
                 text-align: center;
+                border: 2px solid #ffcccb;
             }
 
             h1.title {
                 margin-bottom: 10px;
-                color: #333;
+                color: tomato;
                 font-size: 28px;
+                text-shadow: 1px 1px 2px rgba(255, 99, 71, 0.1);
+            }
+
+            .container > p {
+                color: #ff6347;
+                font-weight: 500;
             }
 
             .lab-list a {
                 display: block;
                 padding: 12px;
                 margin: 10px 0;
-                background: #007bff;
+                background: tomato;
                 color: white;
                 text-decoration: none;
                 border-radius: 6px;
                 font-size: 18px;
-                transition: 0.2s;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 8px rgba(255, 99, 71, 0.3);
             }
 
             .lab-list a:hover {
-                background: #0056b3;
+                background: #ff4520;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(255, 99, 71, 0.4);
             }
         </style>
 

@@ -3,6 +3,118 @@
 <head>
     <meta charset="utf-8">
     <title>Employee Management - REST Consumer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: tomato;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(255, 99, 71, 0.1);
+            margin-bottom: 30px;
+        }
+
+        div {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(255, 99, 71, 0.2);
+            border: 2px solid #ffcccb;
+        }
+
+        input[type="text"], input[type="number"], input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #ffcccb;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: tomato;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin: 10px 5px;
+            accent-color: tomato;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ffcccb;
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background: tomato;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(255, 99, 71, 0.3);
+        }
+
+        button:hover {
+            background: #ff4520;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 99, 71, 0.4);
+        }
+
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(255, 99, 71, 0.2);
+        }
+
+        th {
+            background: tomato;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ffcccb;
+        }
+
+        tr:hover {
+            background: #fff5f5;
+        }
+
+        a {
+            color: tomato;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ff4520;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
