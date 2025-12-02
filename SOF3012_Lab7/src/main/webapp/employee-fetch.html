@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 7 - Bài 1: Fetch JSON</title>
+</head>
+<body>
+<h1>Lab 7 - Bài 1</h1>
+<p>Bấm nút để gọi Servlet và xem dữ liệu JSON trên console.</p>
+<button onclick="loadEmployee()">Gọi Servlet /ajax/employee</button>
+
+<script>
+    function loadEmployee() {
+        // URL tới servlet - nhớ đúng context path của project
+        const url = "/SOF3012_Lab7/ajax/employee";
+
+        fetch(url, { method: "GET" })
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error("HTTP status " + resp.status);
+                }
+                return resp.json(); // đọc JSON
+            })
+            .then(data => {
+                console.log("Dữ liệu JSON nhận được từ servlet:");
+                console.log(data);
+                console.log("Mã NV:", data.manv);
+                console.log("Họ tên:", data.hoTen);
+                console.log("Giới tính:", data.gioiTinh);
+                console.log("Lương:", data.luong);
+            })
+            .catch(err => {
+                console.error("Lỗi khi gọi servlet:", err);
+            });
+    }
+</script>
+</body>
+</html>

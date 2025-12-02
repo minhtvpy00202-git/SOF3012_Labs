@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 7 - Bài 2: UPLOAD</title>
+</head>
+
+<body>
+    <h1>Lab 7 - Bài 2: Upload file với Fetch API - CLient Side</h1>
+
+    <input id="photo" type="file">
+    <button onclick="upload()">Upload</button>
+
+
+    <script>
+
+        function upload() {
+
+            var input = document.getElementById("photo");
+            var formData = new FormData();
+            formData.append('photo', input.files[0]);
+            var url = "http://localhost:8087/SOF3012_Lab7/ajax/fetch/upload";
+            var options = {method:'POST', body:formData}
+            fetch(url, options).then(resp =>resp.json()). then(json => {
+                console.log("success", json);
+             });
+        }
+
+
+    </script>
+
+</body>
+
+
+
+
+</html>
