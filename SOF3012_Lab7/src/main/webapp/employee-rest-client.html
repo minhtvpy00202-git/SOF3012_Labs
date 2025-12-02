@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Employee Management - REST Consumer</title>
+</head>
+
+<body>
+    <h1>Employee Management - REST Consumer</h1>
+
+    <div>
+        <input placeholder="Id?" id="id"><br>
+        <input id="name" placeholder="Name?"><br>
+
+        <input type="radio" name="gender" id="male" checked> Male
+        <input type="radio" name="gender" id="female"> Female<br>
+
+        <input id="salary" placeholder="Salary?"><br>
+        <hr>
+        <button onclick="ctrl.create()">Create</button>
+        <button onclick="ctrl.update()">Update</button>
+        <button onclick="ctrl.delete()">Delete</button>
+        <button onclick="ctrl.reset()">Reset</button>
+    </div>
+
+    <hr>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Salary</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="list"></tbody>
+    </table>
+
+    <script>
+        
+        const BASE_URL = "http://localhost:8087/SOF3012_Lab7/employees";
+
+        var ctrl = {
+            setForm(employee) {
+                document.getElementById("id").value = employee.id || "";
+                document.getElementById("name").value = employee.name || "";
+                document.getElementById("salary").value = employee.salary || 0;
+                if (employee.gender) {
+                    document.getElementById("male").checked = true;
+                } else {
+                    document.getElementById("female").checked = true;
+                }
+            },
+
+            getForm() {
+                return {
+                    id: document.getElementById("id").value,
+                    name: document.getElementById("name").value,
+                    gender: document.getElementById("male").checked,
+                    salary: parseFloat(document.getElementById("salary").value || 0)
+                };
+            },
+
+            fillToTable(employees) {
+                let rows = [];
+                employees.forEach(e => {
+                    let genderText = e.gender ? "Male" : "Female";
+                    let row =
+                        `<tr>
+                            <td>${e.id}</td>
+                            <td>${e.name}</td>
+                            <td>${genderText}</td>
+                            <td>${e.salary}</td>
+                            <td><a href="javascript:ctrl.edit('${e.id}')">Edit</a></td>
+                        </tr>`;
+                    rows.push(row);
+                });
+                document.getElementById("list").innerHTML = rows.join('');
+            },
+
+            loadAll() {
+                fetch(BASE_URL, { method: "GET" })
+                    .then(resp => resp.json())
+                    .then(employees => {
+                        this.fillToTable(employees);
+                    });
+            },
+
+            create() {
+                let data = this.getForm();
+                fetch(BASE_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                })
+                    .then(resp => resp.json())
+                    .then(json => {
+                        this.loadAll();
+                        this.reset();
+                    });
+            },
+
+            update() {
+                let data = this.getForm();
+                fetch(`${BASE_URL}/${data.id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                })
+                    .then(resp => resp.json())
+                    .then(json => {
+                        this.loadAll();
+                    });
+            },
+
+            delete() {
+                let id = document.getElementById("id").value;
+                if (!id) {
+                    alert("Vui lòng nhập Id cần xóa");
+                    return;
+                }
+                fetch(`${BASE_URL}/${id}`, { method: "DELETE" })
+                    .then(resp => resp.json())
+                    .then(json => {
+                        this.loadAll();
+                        this.reset();
+                    });
+            },
+
+            reset() {
+                let employee = { id: "", name: "", salary: 0, gender: true };
+                this.setForm(employee);
+            },
+
+            edit(id) {
+                fetch(`${BASE_URL}/${id}`, { method: "GET" })
+                    .then(resp => resp.json())
+                    .then(employee => {
+                        this.setForm(employee);
+                    });
+            }
+        };
+
+        // load danh sách ngay khi mở trang
+        ctrl.loadAll();
+    </script>
+</body>
+</html>
