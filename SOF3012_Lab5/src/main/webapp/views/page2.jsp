@@ -20,7 +20,7 @@
         }
         /* Header */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6347 0%, #ff4500 100%);
             color: white;
             padding: 20px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -87,8 +87,8 @@
             transition: all 0.3s;
         }
         .nav a:hover, .nav a.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
+            color: #ff6347;
+            border-bottom-color: #ff6347;
         }
         /* Main Content */
         .container {
@@ -102,14 +102,14 @@
             color: #666;
         }
         .breadcrumb a {
-            color: #667eea;
+            color: #ff6347;
             text-decoration: none;
         }
         .breadcrumb a:hover {
             text-decoration: underline;
         }
         .page-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6347 0%, #ff4500 100%);
             color: white;
             padding: 40px;
             border-radius: 10px;
@@ -145,7 +145,7 @@
         .tech-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6347 0%, #ff4500 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -156,7 +156,7 @@
         }
         .tech-category {
             display: inline-block;
-            background: #3498db;
+            background: #ff6347;
             color: white;
             padding: 5px 12px;
             border-radius: 15px;
@@ -218,7 +218,7 @@
         .trending-number {
             font-size: 24px;
             font-weight: bold;
-            color: #667eea;
+            color: #ff6347;
             min-width: 40px;
         }
         .trending-info h4 {
