@@ -107,6 +107,6 @@
     </dependencies>
 
     <build>
-        <finalName>SOF3012_Lab5</finalName>
+        <finalName>Lab1</finalName>
     </build>
 </project>

@@ -1,12 +1,15 @@
 package poly.entity;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,6 +26,16 @@ public class User {
     private boolean admin;
     @OneToMany(mappedBy = "user") private List<Favourite> favourites;
 
-    public String getPassword() { return password; }
-    public String getFullname() { return fullname; }
+    public String getPassword() {
+        return password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
 }

@@ -51,7 +51,7 @@
     </style>
 </head>
 <body>
-<p>Lượt truy cập: ${applicationScope.visitors}</p>
+<div style="text-align:center;color:#555;">Khách truy cập: ${applicationScope.visitors}</div>
 <div class="login-box">
     <h2>Đăng nhập</h2>
 
@@ -60,12 +60,17 @@
     </c:if>
 
     <form method="post" action="${pageContext.request.contextPath}/login">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username"
-               value="${username != null ? username : ''}" />
+        <label for="id">Username</label>
+        <input type="text" id="id" name="id"
+               value="${empty id ? sessionScope.rememberId : id}" />
 
         <label for="password">Mật khẩu</label>
-        <input type="password" id="password" name="password" />
+        <input type="password" id="password" name="password"
+               value="${sessionScope.rememberPassword}" />
+
+        <label style="margin-top:8px; display:block">
+            <input type="checkbox" id="remember" name="remember" /> Remember me
+        </label>
 
         <button type="submit" class="btn">Đăng nhập</button>
     </form>

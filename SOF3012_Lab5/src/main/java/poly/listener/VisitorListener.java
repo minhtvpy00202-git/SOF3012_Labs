@@ -7,58 +7,63 @@ import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.http.HttpSessionEvent;
 import jakarta.servlet.http.HttpSessionListener;
 
-import java.nio.charset.StandardCharsets;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @WebListener
 public class VisitorListener implements ServletContextListener, HttpSessionListener {
 
-    private Path storagePath;
+    private String storagePath(ServletContext ctx) {
+        String p = ctx.getRealPath("/WEB-INF/visitors.txt");
+        if (p == null) {
+            p = System.getProperty("java.io.tmpdir") + File.separator + "visitors.txt";
+        }
+        return p;
+    }
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        String base = System.getProperty("catalina.base", System.getProperty("java.io.tmpdir"));
-        storagePath = Paths.get(base, "visitors.txt");
-
-        int count = 0;
+        ServletContext ctx = sce.getServletContext();
+        long count = 0L;
         try {
-            if (Files.exists(storagePath)) {
-                String s = Files.readString(storagePath, StandardCharsets.UTF_8).trim();
-                if (!s.isEmpty()) count = Integer.parseInt(s);
+            Path path = Path.of(storagePath(ctx));
+            if (Files.exists(path)) {
+                String s = Files.readString(path).trim();
+                if (!s.isEmpty()) count = Long.parseLong(s);
             }
         } catch (Exception ignored) {
         }
-
-        ServletContext ctx = sce.getServletContext();
-        ctx.setAttribute("visitors", new AtomicInteger(count));
+        ctx.setAttribute("visitors", count);
     }
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         ServletContext ctx = se.getSession().getServletContext();
-        Object obj = ctx.getAttribute("visitors");
-        if (obj instanceof AtomicInteger ai) {
-            ai.incrementAndGet();
+        Object o = ctx.getAttribute("visitors");
+        long count = 0L;
+        if (o instanceof Number) {
+            count = ((Number) o).longValue();
+        } else if (o instanceof String) {
+            try { count = Long.parseLong((String) o); } catch (Exception ignored) {}
         }
+        ctx.setAttribute("visitors", count + 1);
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         ServletContext ctx = sce.getServletContext();
-        Object obj = ctx.getAttribute("visitors");
-        int count = 0;
-        if (obj instanceof AtomicInteger ai) {
-            count = ai.get();
+        Object o = ctx.getAttribute("visitors");
+        long count = 0L;
+        if (o instanceof Number) {
+            count = ((Number) o).longValue();
+        } else if (o instanceof String) {
+            try { count = Long.parseLong((String) o); } catch (Exception ignored) {}
         }
         try {
-            if (storagePath == null) {
-                String base = System.getProperty("catalina.base", System.getProperty("java.io.tmpdir"));
-                storagePath = Paths.get(base, "visitors.txt");
-            }
-            Files.writeString(storagePath, Integer.toString(count), StandardCharsets.UTF_8);
+            Path path = Path.of(storagePath(ctx));
+            Files.createDirectories(path.getParent());
+            Files.writeString(path, Long.toString(count));
         } catch (Exception ignored) {
         }
     }

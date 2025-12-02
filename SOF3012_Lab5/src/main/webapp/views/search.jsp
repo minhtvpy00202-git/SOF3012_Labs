@@ -9,9 +9,9 @@
     <title>Tìm kiếm video</title>
 </head>
 <body>
-<p>Lượt truy cập: ${applicationScope.visitors}</p>
+<div>Khách truy cập: ${applicationScope.visitors}</div>
 <c:if test="${not empty sessionScope.user}">
-    <p>Họ và tên: ${sessionScope.user.fullname}</p>
+    <p>Đã đăng nhập: ${sessionScope.user.fullname}</p>
 </c:if>
 <h2>Tìm kiếm video theo từ khóa (title)</h2>
 
