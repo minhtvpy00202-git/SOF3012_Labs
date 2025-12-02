@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    background: linear-gradient(135deg, tomato 0%, #ff7f50 100%);
     min-height: 100vh;
     padding: 20px;
     color: #333;
@@ -27,7 +27,7 @@ body {
 
 /* Header */
 h1 {
-    color: #2193b0;
+    color: tomato;
     font-size: 2.5em;
     margin-bottom: 20px;
     text-align: center;
@@ -35,17 +35,17 @@ h1 {
 }
 
 h2 {
-    color: #1a7a8f;
+    color: #d9534f;
     font-size: 1.8em;
     margin-top: 30px;
     margin-bottom: 15px;
-    border-bottom: 3px solid #2193b0;
+    border-bottom: 3px solid tomato;
     padding-bottom: 10px;
 }
 
 /* User info section */
 .user-info {
-    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    background: linear-gradient(135deg, tomato 0%, #ff7f50 100%);
     color: white;
     padding: 15px 20px;
     border-radius: 10px;
@@ -53,7 +53,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 15px rgba(33, 147, 176, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 99, 71, 0.3);
 }
 
 .user-info a {
@@ -83,28 +83,28 @@ ul li {
 
 ul li a {
     display: inline-block;
-    color: #2193b0;
+    color: tomato;
     text-decoration: none;
     padding: 12px 25px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #f5f7fa 0%, #ffd4d4 100%);
     border-radius: 8px;
     transition: all 0.3s ease;
     font-weight: 500;
-    border-left: 4px solid #2193b0;
+    border-left: 4px solid tomato;
 }
 
 ul li a:hover {
-    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    background: linear-gradient(135deg, tomato 0%, #ff7f50 100%);
     color: white;
     transform: translateX(10px);
-    box-shadow: 0 5px 15px rgba(33, 147, 176, 0.4);
+    box-shadow: 0 5px 15px rgba(255, 99, 71, 0.4);
 }
 
 /* Đường phân cách */
 hr {
     border: none;
     height: 2px;
-    background: linear-gradient(to right, #2193b0, #6dd5ed);
+    background: linear-gradient(to right, tomato, #ff7f50);
     margin: 25px 0;
 }
 
@@ -141,14 +141,14 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="password"]:focus {
     outline: none;
-    border-color: #2193b0;
-    box-shadow: 0 0 10px rgba(33, 147, 176, 0.2);
+    border-color: tomato;
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.2);
 }
 
 button[type="submit"] {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    background: linear-gradient(135deg, tomato 0%, #ff7f50 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -156,12 +156,12 @@ button[type="submit"] {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(33, 147, 176, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 99, 71, 0.3);
 }
 
 button[type="submit"]:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(33, 147, 176, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 99, 71, 0.4);
 }
 
 button[type="submit"]:active {
